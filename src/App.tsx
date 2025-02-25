@@ -60,6 +60,7 @@ function App() {
                 key={index}
                 variants={letterAnimation}
                 className="inline-block"
+                style={{ whiteSpace: 'pre' }}
               >
                 {char === " " ? "\u00A0" : char}
               </motion.span>
