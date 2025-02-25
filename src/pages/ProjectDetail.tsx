@@ -3,10 +3,14 @@ import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Download } from 'lucide-react';
 import { projectDetails } from '../data';
+import { ThemeToggle } from '../components/ThemeToggle';
+import { useTheme } from '../ThemeContext';
 
 export const ProjectDetail = () => {
   const { id } = useParams<{ id: string }>();
   const project = id ? projectDetails[id as keyof typeof projectDetails] : null;
+
+  const { isDark, toggleTheme } = useTheme();
 
   if (!project) {
     return <div>Project not found</div>;
@@ -14,6 +18,7 @@ export const ProjectDetail = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-slate-900 text-gray-900 dark:text-gray-100 py-20">
+      <ThemeToggle isDark={isDark} toggleTheme={toggleTheme} />
       <div className="container mx-auto px-4">
         <Link 
           to="/"
