@@ -10,6 +10,7 @@
   body {
     @apply antialiased;
     overflow-x: hidden; /* Prevent horizontal scroll on the body */
+    margin-right: 0 !important;
   }
 }
 
