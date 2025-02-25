@@ -45,10 +45,10 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-slate-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
       <ThemeToggle isDark={isDark} toggleTheme={toggleTheme} />
-      
+
       {/* Hero Section */}
       <Section className="min-h-screen flex items-center justify-center text-center px-4">
-        <div>
+        <div className="w-full">
           <motion.h1
             className="text-5xl md:text-7xl font-bold mb-6 flex justify-center"
             variants={nameAnimation}
@@ -71,7 +71,7 @@ function App() {
             transition={{ delay: 0.2 }}
             className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8"
           >
-            Data Science Enthusiast & SAP PI/PO Expert
+            Data Science Enthusiast &amp; SAP PI/PO Expert
           </motion.p>
           <motion.blockquote
             initial={{ opacity: 0, y: -20 }}
@@ -158,19 +158,19 @@ function App() {
         <h2 className="text-4xl font-bold mb-12 text-center">Skills</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
           <div>
-            <h3 className="text-2xl font-semibold mb-6 text-gradient">Data Science & Analytics</h3>
+            <h3 className="text-2xl font-semibold mb-6 text-gradient">Data Science &amp; Analytics</h3>
             {skills.filter(skill => skill.category === 'frontend').map((skill, index) => (
               <SkillBar key={skill.id} skill={skill} index={index} />
             ))}
           </div>
           <div>
-            <h3 className="text-2xl font-semibold mb-6 text-gradient">Backend & Integration</h3>
+            <h3 className="text-2xl font-semibold mb-6 text-gradient">Backend &amp; Integration</h3>
             {skills.filter(skill => skill.category === 'backend').map((skill, index) => (
               <SkillBar key={skill.id} skill={skill} index={index} />
             ))}
           </div>
           <div>
-            <h3 className="text-2xl font-semibold mb-6 text-gradient">Tools & Platforms</h3>
+            <h3 className="text-2xl font-semibold mb-6 text-gradient">Tools &amp; Platforms</h3>
             {skills.filter(skill => skill.category === 'tools').map((skill, index) => (
               <SkillBar key={skill.id} skill={skill} index={index} />
             ))}
