@@ -2,23 +2,21 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Download } from 'lucide-react';
-import { projectDetails } from '../data';
 import { ThemeToggle } from '../components/ThemeToggle';
-import { useTheme } from '../ThemeContext';
+import { projectDetails } from '../data';
 
 export const ProjectDetail = () => {
   const { id } = useParams<{ id: string }>();
   const project = id ? projectDetails[id as keyof typeof projectDetails] : null;
-
-  const { isDark, toggleTheme } = useTheme();
 
   if (!project) {
     return <div>Project not found</div>;
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-slate-900 text-gray-900 dark:text-gray-100 py-20">
-      <ThemeToggle isDark={isDark} toggleTheme={toggleTheme} />
+    <div className="min-h-screen bg-gray-50 dark:bg-slate-900 text-gray-900 dark:text-gray-100 py-20 transition-colors duration-300">
+      <ThemeToggle />
+      
       <div className="container mx-auto px-4">
         <Link 
           to="/"
@@ -33,7 +31,7 @@ export const ProjectDetail = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="text-4xl font-bold mb-6">{project.title}</h1>
+          <h1 className="text-3xl sm:text-4xl font-bold mb-6">{project.title}</h1>
           
           <div className="aspect-video rounded-xl overflow-hidden mb-8">
             <img 
