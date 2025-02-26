@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Github as GitHub, Linkedin, Mail, ChevronDown, FileDown } from 'lucide-react';
 import { ThemeToggle } from './components/ThemeToggle';
@@ -9,18 +9,6 @@ import { SkillBar } from './components/SkillBar';
 import { projects, experiences, skills } from './data';
 
 function App() {
-  const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [isDark]);
-
-  const toggleTheme = () => setIsDark(!isDark);
-
   const nameAnimation = {
     hidden: { opacity: 0, y: -20 },
     visible: {
@@ -44,13 +32,13 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-slate-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
-      <ThemeToggle isDark={isDark} toggleTheme={toggleTheme} />
-
+      <ThemeToggle />
+      
       {/* Hero Section */}
       <Section className="min-h-screen flex items-center justify-center text-center px-4">
-        <div className="w-full">
+        <div className="w-full max-w-4xl mx-auto">
           <motion.h1
-            className="text-5xl md:text-7xl font-bold mb-6 flex justify-center"
+            className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 flex flex-wrap justify-center"
             variants={nameAnimation}
             initial="hidden"
             animate="visible"
@@ -60,7 +48,6 @@ function App() {
                 key={index}
                 variants={letterAnimation}
                 className="inline-block"
-                style={{ whiteSpace: 'pre' }}
               >
                 {char === " " ? "\u00A0" : char}
               </motion.span>
@@ -72,13 +59,13 @@ function App() {
             transition={{ delay: 0.2 }}
             className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8"
           >
-            Data Science Enthusiast &amp; SAP PI/PO Expert
+            Data Science Enthusiast & SAP PI/PO Expert
           </motion.p>
           <motion.blockquote
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="text-lg italic text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto px-8 border-l-4 border-blue-500 dark:border-blue-400"
+            className="text-lg italic text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto px-4 sm:px-8 border-l-4 border-blue-500 dark:border-blue-400"
           >
             "From Middleware to Machine Learning, my journey has been an exciting gradient descent. With the right learning rate, I adapt quickly and converge efficiently. I believe I'll be a great model for your data."
           </motion.blockquote>
@@ -86,7 +73,7 @@ function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
-            className="flex justify-center gap-6 items-center"
+            className="flex justify-center gap-4 sm:gap-6 items-center flex-wrap"
           >
             <motion.a
               whileHover={{ scale: 1.1 }}
@@ -95,6 +82,7 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-800"
+              aria-label="GitHub Profile"
             >
               <GitHub className="w-6 h-6" />
             </motion.a>
@@ -105,6 +93,7 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-800"
+              aria-label="LinkedIn Profile"
             >
               <Linkedin className="w-6 h-6" />
             </motion.a>
@@ -113,6 +102,7 @@ function App() {
               whileTap={{ scale: 0.9 }}
               href="mailto:skttmuri@memphis.edu"
               className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-800"
+              aria-label="Email Contact"
             >
               <Mail className="w-6 h-6" />
             </motion.a>
@@ -121,7 +111,7 @@ function App() {
               whileTap={{ scale: 0.95 }}
               href="/Hemanth_Resume.pdf"
               download
-              className="ml-4 inline-flex items-center gap-2 px-6 py-2 bg-blue-600 dark:bg-blue-500 text-white rounded-full font-semibold hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors duration-300"
+              className="ml-0 sm:ml-4 mt-4 sm:mt-0 inline-flex items-center gap-2 px-6 py-2 bg-blue-600 dark:bg-blue-500 text-white rounded-full font-semibold hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors duration-300"
             >
               <FileDown className="w-5 h-5" />
               Download Resume
@@ -157,21 +147,21 @@ function App() {
       {/* Skills Section */}
       <Section className="container mx-auto px-4">
         <h2 className="text-4xl font-bold mb-12 text-center">Skills</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 max-w-6xl mx-auto">
           <div>
-            <h3 className="text-2xl font-semibold mb-6 text-gradient">Data Science &amp; Analytics</h3>
+            <h3 className="text-2xl font-semibold mb-6 text-gradient">Data Science & Analytics</h3>
             {skills.filter(skill => skill.category === 'frontend').map((skill, index) => (
               <SkillBar key={skill.id} skill={skill} index={index} />
             ))}
           </div>
           <div>
-            <h3 className="text-2xl font-semibold mb-6 text-gradient">Backend &amp; Integration</h3>
+            <h3 className="text-2xl font-semibold mb-6 text-gradient">Backend & Integration</h3>
             {skills.filter(skill => skill.category === 'backend').map((skill, index) => (
               <SkillBar key={skill.id} skill={skill} index={index} />
             ))}
           </div>
           <div>
-            <h3 className="text-2xl font-semibold mb-6 text-gradient">Tools &amp; Platforms</h3>
+            <h3 className="text-2xl font-semibold mb-6 text-gradient">Tools & Platforms</h3>
             {skills.filter(skill => skill.category === 'tools').map((skill, index) => (
               <SkillBar key={skill.id} skill={skill} index={index} />
             ))}
