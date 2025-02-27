@@ -121,9 +121,9 @@ function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8 }}
-            className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+            className="mt-8 sm:mt-16"
           >
-            <ChevronDown className="w-8 h-8 animate-bounce" />
+            <ChevronDown className="w-8 h-8 animate-bounce mx-auto" />
           </motion.div>
         </div>
       </Section>
