@@ -21,3 +21,20 @@ export interface Skill {
   level: number;
   category: 'frontend' | 'backend' | 'tools';
 }
+
+interface BlogPostContent {
+  type: 'paragraph' | 'heading' | 'code';
+  content: string;
+}
+
+interface BlogPost {
+  title: string;
+  date: string;
+  readTime: number;
+  excerpt: string;
+  content: BlogPostContent[];
+}
+
+export interface BlogPosts {
+  [key: string]: BlogPost;
+}

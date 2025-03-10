@@ -1,4 +1,4 @@
-import { Project, Experience, Skill } from './types';
+import { Project, Experience, Skill, BlogPosts } from './types';
 
 export const projects: Project[] = [
   {
@@ -116,6 +116,79 @@ export const projectDetails = {
       "Tableau",
       "Statistical Analysis",
       "Linear Regression"
+    ]
+  }
+};
+
+export const blogPosts: BlogPosts = {
+  'introduction-to-data-science': {
+    title: "Getting Started with Data Visualization: A Beginner's Guide",
+    date: "March 1, 2024",
+    readTime: 5,
+    excerpt: "An introduction to the fundamental concepts of data visualization and how to begin your journey.",
+    content: [
+      {
+        type: 'paragraph',
+        content: "As I continue my journey into data science, I've discovered that creating effective visualizations is both an art and a science. In this post, I'll share what I've learned about turning raw data into meaningful visual stories that can help drive decisions and insights."
+      },
+      {
+        type: 'heading',
+        content: "Why Data Visualization Matters"
+      },
+      {
+        type: 'paragraph',
+        content: "Data Science is an interdisciplinary field that uses scientific methods, processes, algorithms, and systems to extract knowledge and insights from structured and unstructured data. It combines statistics, mathematics, programming, and domain expertise to analyze complex data problems."
+      },
+      {
+        type: 'heading',
+        content: "Essential Skills for Data Scientists"
+      },
+      {
+        type: 'paragraph',
+        content: "To become a successful data scientist, you need to develop skills in several key areas: Programming (Python, R), Statistics, Machine Learning, Data Visualization, and Domain Knowledge."
+      },
+      {
+        type: 'code',
+        content: `# Simple example of data analysis in Python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load and analyze data
+data = pd.read_csv('dataset.csv')
+plt.plot(data['x'], data['y'])
+plt.show()`
+      }
+    ]
+  },
+  'machine-learning-basics': {
+    title: "Understanding Machine Learning Algorithms",
+    date: "March 5, 2024",
+    readTime: 7,
+    excerpt: "A comprehensive overview of basic machine learning algorithms and their applications.",
+    content: [
+      {
+        type: 'paragraph',
+        content: "Machine Learning is a subset of artificial intelligence that focuses on building systems that learn from and adapt to data. Let's explore the fundamental concepts and algorithms."
+      },
+      {
+        type: 'heading',
+        content: "Types of Machine Learning"
+      },
+      {
+        type: 'paragraph',
+        content: "Machine Learning can be broadly categorized into three types: Supervised Learning, Unsupervised Learning, and Reinforcement Learning. Each type serves different purposes and has its own set of algorithms."
+      },
+      {
+        type: 'code',
+        content: `# Example of a simple classification model
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+
+# Split data and train model
+X_train, X_test, y_train, y_test = train_test_split(X, y)
+model = LogisticRegression()
+model.fit(X_train, y_train)`
+      }
     ]
   }
 };
