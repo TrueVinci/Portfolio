@@ -11,7 +11,7 @@ export const ThemeToggle: React.FC = () => {
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
       onClick={toggleTheme}
-      className="fixed top-4 right-4 p-2 rounded-full bg-opacity-20 backdrop-blur-sm z-50"
+      className="fixed top-4 right-4 p-2 rounded-full bg-white/20 dark:bg-slate-800/20 backdrop-blur-sm z-[60] shadow-lg hover:shadow-xl transition-all duration-300"
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
     >
       {isDark ? (

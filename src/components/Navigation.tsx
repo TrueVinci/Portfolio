@@ -1,9 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-scroll';
+import { Link as ScrollLink } from 'react-scroll';
 import { Menu } from 'lucide-react';
 
 const navItems = [
+  { id: 'home', label: 'Home' },
   { id: 'about', label: 'About' },
   { id: 'skills', label: 'Skills' },
   { id: 'projects', label: 'Projects' },
@@ -16,16 +17,25 @@ export const Navigation: React.FC = () => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-lg">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-lg shadow-lg">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="text-xl font-bold gradient-text"
+          <ScrollLink
+            to="home"
+            spy={true}
+            smooth={true}
+            offset={-64}
+            duration={500}
+            className="cursor-pointer"
           >
-            HK
-          </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="text-xl font-bold gradient-text"
+            >
+              HK
+            </motion.div>
+          </ScrollLink>
 
           {/* Mobile menu button */}
           <button
@@ -39,7 +49,7 @@ export const Navigation: React.FC = () => {
           {/* Desktop menu */}
           <div className="hidden md:flex space-x-8">
             {navItems.map((item) => (
-              <Link
+              <ScrollLink
                 key={item.id}
                 to={item.id}
                 spy={true}
@@ -47,9 +57,10 @@ export const Navigation: React.FC = () => {
                 offset={-64}
                 duration={500}
                 className="cursor-pointer hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                activeClass="text-blue-600 dark:text-blue-400"
               >
                 {item.label}
-              </Link>
+              </ScrollLink>
             ))}
           </div>
         </div>
@@ -62,7 +73,7 @@ export const Navigation: React.FC = () => {
         >
           <div className="py-2 space-y-2">
             {navItems.map((item) => (
-              <Link
+              <ScrollLink
                 key={item.id}
                 to={item.id}
                 spy={true}
@@ -70,10 +81,11 @@ export const Navigation: React.FC = () => {
                 offset={-64}
                 duration={500}
                 className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                activeClass="text-blue-600 dark:text-blue-400 bg-gray-100 dark:bg-slate-800"
                 onClick={() => setIsOpen(false)}
               >
                 {item.label}
-              </Link>
+              </ScrollLink>
             ))}
           </div>
         </motion.div>
